@@ -1,18 +1,17 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import cartReducer from '../features/cart/cartSlice';
 
 const counterSlice = createSlice({
   name: 'counter',
   initialState: { counter: 0 },
   reducers: {
-    increment(state, action) {
-      console.log(state);
+    increment(state) {
       state.counter++;
     },
-    decrement(state, action) {
+    decrement(state) {
       state.counter--;
     },
     addBy(state, action) {
-      console.log('add', action);
       state.counter += action.payload;
     },
   },
@@ -21,7 +20,10 @@ const counterSlice = createSlice({
 export const actions = counterSlice.actions;
 
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: {
+    cart: cartReducer,
+    counter: counterSlice.reducer,
+  },
 });
 
 export default store;
