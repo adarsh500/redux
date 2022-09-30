@@ -1,5 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import cartReducer from '../features/cart/cartSlice';
+import modalReducer from '../features/modal/modalSlice';
 
 const counterSlice = createSlice({
   name: 'counter',
@@ -23,6 +24,7 @@ const store = configureStore({
   reducer: {
     cart: cartReducer,
     counter: counterSlice.reducer,
+    modal: modalReducer,
   },
 });
 
